@@ -1,0 +1,31 @@
+server:
+  port: 0
+  servlet:
+    context-path: /api
+
+spring:
+  application:
+    name: easyshop-order-service
+  devtools:
+    enabled: true
+  spring:
+    rabbitmq:
+      host: localhost
+      port: 5672
+      username: guest
+      password: guest
+    cloud:
+      bus:
+        enabled: true
+        refresh:
+          enabled: true
+eureka:
+  instance:
+    hostname: localhost
+    port: 8761
+  client:
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:${eureka.instance.port}/eureka
+
+environment:
+  message: Hello! You are using local Spring environment
