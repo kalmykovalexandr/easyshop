@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: easyshop-user-service  # имя должно совпадать с названием конфиг-файла в репозитории
+  cloud:
+    config:
+      uri: http://localhost:8080  # адрес config-server
+      username: config-user       # если настроена безопасность
+      password: config-password   # если настроена безопасность

@@ -1,0 +1,35 @@
+server:
+  port: 8888
+
+spring:
+  application:
+    name: easyshop-config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: ${CONFIG_REPO_URI:https://github.com/kalmykovalexandr/easyshop-config}
+          default-label: ${CONFIG_REPO_BRANCH:main}
+          search-paths: config-files
+          clone-on-start: true
+          timeout: 5
+          force-pull: true
+  security:
+    user:
+      name: config-user
+      password: config-password
+
+# Actuator
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+  endpoint:
+    health:
+      show-details: when_authorized
+
+logging:
+  level:
+    org.springframework.cloud: INFO
+    org.springframework.boot: INFO
